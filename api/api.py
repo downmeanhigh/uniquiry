@@ -5,6 +5,7 @@ import flask_cors
 
 from db import db
 from accounts import User
+import re
 
 # Initialize flask app for the example
 app = flask.Flask(__name__)
@@ -25,7 +26,7 @@ cors.init_app(app)
 guard = flask_praetorian.Praetorian()
 guard.init_app(app, User)
 
-# Add users for the example
+
 with app.app_context():
     db.create_all()
     if db.session.query(User).filter_by(username='test').count() < 1:
@@ -36,6 +37,33 @@ with app.app_context():
             ))
     db.session.commit()
 
+# Register and add users into database
+@app.route('/api/register', methods =['POST'])
+def register():
+    msg = ''
+    req = flask.request.get_json(force=True)
+    new_username = req.get('username', None)
+    new_password = req.get('password', None)
+    # email = req.form['email']
+    if db.session.query(User).filter_by(username=new_username).count() < 1:
+        msg = 'Account already exists !'
+    #elif not re.match(r'[^@]+@[^@]+\.[^@]+', email):
+    #    msg = 'Invalid email address !'
+    elif not re.match(r'[A-Za-z0-9]+', new_username):
+        msg = 'Username must contain only characters and numbers !'
+    elif not username or not password: # or not email:
+        msg = 'Please fill out the form !'
+    else:
+        db.session.add(User(
+            username= new_username,
+            password=guard.hash_password(new_password),
+            roles='member'
+            ))
+        db.session.commit()
+        msg = 'You have successfully registered !'
+    user = guard.authenticate(new_username,new_password)
+    ret = {'access_token': guard.encode_jwt_token(user)}
+    return ret, 200
 
 # Set up some routes for the example
 @app.route('/api/')

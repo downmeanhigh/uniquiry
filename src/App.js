@@ -21,6 +21,9 @@ export default function App() {
               <Link to="/login">Login</Link>
             </li>
             <li>
+              <Link to="/register">Register</Link>
+            </li>
+            <li>
               <Link to="/secret">Secret</Link>
             </li>
           </ul>
@@ -31,6 +34,9 @@ export default function App() {
         <Switch>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/register">
+            <Register />
           </Route>
           <PrivateRoute path="/secret" component={Secret} />
           <Route path="/">
@@ -47,6 +53,60 @@ function Home() {
     fetch("/api").then(resp => resp.json()).then(resp => console.log(resp))
   }, [])
   return <h2>Home</h2>;
+}
+
+function Register() {
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('');
+
+  const onSubmitClick = (e)=>{
+    e.preventDefault()
+    console.log("You pressed register")
+    let opts = {
+      'username': username,
+      'password': password
+    }
+    console.log(opts)
+    fetch('/api/register', {
+      method: 'post',
+      body: JSON.stringify(opts)
+    }).then(r => r.json())
+  }
+  
+
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value)
+  }
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value)
+  }
+
+  return (
+    <div>
+      <h2>Register</h2>
+      <form action="#">
+        <div>
+          <input type="text" 
+            placeholder="New Username" 
+            onChange={handleUsernameChange}
+            value={username} 
+          />
+        </div>
+        <div>
+          <input
+            type="password"
+            placeholder="New Password"
+            onChange={handlePasswordChange}
+            value={password}
+          />
+        </div>
+        <button onClick={onSubmitClick} type="submit">
+          Register
+        </button>
+      </form>
+    </div>
+  )
 }
 
 function Login() {
