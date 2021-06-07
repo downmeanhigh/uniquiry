@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {login, authFetch, useAuth, logout} from "./auth"
+import {login, authFetch, useAuth, logout} from "./components/login"
 import {
   BrowserRouter as Router,
   Switch,
@@ -71,6 +71,10 @@ function Register() {
       method: 'post',
       body: JSON.stringify(opts)
     }).then(r => r.json())
+    .then(
+      result => {console.log(result)
+      }
+    )
   }
   
 
