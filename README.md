@@ -1,3 +1,11 @@
+1. cd api
+2. env/Scripts/activate (activate virtual env for flask)
+3. flask run
+4. cd ../
+5. npm run start
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
