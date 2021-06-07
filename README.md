@@ -2,7 +2,8 @@
 2. env/Scripts/activate (activate virtual env for flask)
 3. flask run
 4. cd ../
-5. npm run start
+5. npm install (to generate node_modules)
+6. npm run start
 
 
 
