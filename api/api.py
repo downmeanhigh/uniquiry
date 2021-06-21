@@ -3,7 +3,7 @@ import flask
 import flask_praetorian
 import flask_cors
 
-from database import db, User
+from database import db, User, Interest
 import re
 
 # Initialize flask app for the example
@@ -25,7 +25,7 @@ cors.init_app(app)
 guard = flask_praetorian.Praetorian()
 guard.init_app(app, User)
 
-
+# Initiate first user
 with app.app_context():
     db.create_all()
     if db.session.query(User).filter_by(username='uniquiry').count() < 1:
@@ -71,6 +71,10 @@ def login():
     username = req.get('username', None)
     password = req.get('password', None)
     user = guard.authenticate(username, password)
+    id = User.query.filter_by(username=username).first().id
+    if db.session.query(Interest).filter_by(user_id=id).count() < 1:
+        db.session.add(Interest(user_id=id))
+        db.session.commit()
     ret = {'access_token': guard.encode_jwt_token(user)}
     return ret, 200
 
@@ -95,7 +99,27 @@ def protected():
     A protected endpoint. The auth_required decorator will require a header
     containing a valid JWT
     """
-    return {'message': f'protected endpoint (allowed user {flask_praetorian.current_user().username})'}
+    return {'message': f'protected endpoint (allowed user {flask_praetorian.current_user().firstname})'}
+
+@app.route('/api/interest', methods=['GET','POST'])
+@flask_praetorian.auth_required
+def interest():
+    req = flask.request.get_json(force=True)
+    updated = Interest.query.filter_by(user_id=flask_praetorian.current_user().id).first()
+    updated.datascience = req.get('datascience', False)
+    updated.software_dev = req.get('software_dev', False)
+    updated.optimization = req.get('optimization', False)
+    updated.engineering = req.get('engineering', False)
+    updated.statistics = req.get('statistics', False)
+    updated.mathematics = req.get('mathematics', False)
+    updated.game_dev = req.get('game_dev', False)
+    updated.ai_ml = req.get('ai_ml', False)
+    updated.physics = req.get('physics', False)
+    updated.chemistry = req.get('chemistry', False)
+    updated.biology = req.get('biology', False)
+    db.session.commit()
+    ret = {'message': str(updated)}
+    return ret
 
 # Run the example
 if __name__ == '__main__':

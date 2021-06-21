@@ -1,5 +1,6 @@
 import {createAuthProvider} from 'react-token-auth';
 import React, { useEffect, useState } from "react";
+import Interest from "./interest";
 
 export const [useAuth, authFetch, login, logout] =
     createAuthProvider({
@@ -70,7 +71,12 @@ const Login = () => {
           Login Now
         </button>
       </form>
-      : <button onClick={() => logout()}>Logout</button>}
+      : 
+      <div>
+        <Interest />
+        <button onClick={() => logout()}>Logout</button>
+      </div>
+}
     </div>
   )
 }
