@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Interest from "./interest";
+import Profile from "./profile";
 import {authFetch, useAuth, login, logout} from "./authenticate"
 
 import Avatar from '@material-ui/core/Avatar';
@@ -150,7 +150,7 @@ const Login = () => {
     </Grid>
     : 
       <div>
-        <Interest />
+        <Profile />
         <button onClick={() => logout()}>Logout</button>
       </div>}
     </div>
