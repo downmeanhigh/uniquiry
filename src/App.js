@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import {authFetch, useAuth} from "./components/login"
+import {authFetch, useAuth} from "./components/authenticate"
 import Login from "./components/login.js"
 import Register from "./components/register.js"
+import Search from "./components/search.js"
 import {
   BrowserRouter as Router,
   Switch,
@@ -54,7 +55,11 @@ function Home() {
   useEffect(() => {
     fetch("/api").then(resp => resp.json()).then(resp => console.log(resp))
   }, [])
-  return <h2>Home</h2>;
+  return (
+    <div>
+      <h2>Home</h2>
+    </div>
+  );
 }
 
 const PrivateRoute = ({ component: Component, ...rest }) => {

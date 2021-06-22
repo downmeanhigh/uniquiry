@@ -101,7 +101,7 @@ def protected():
     """
     return {'message': f'protected endpoint (allowed user {flask_praetorian.current_user().firstname})'}
 
-@app.route('/api/interest', methods=['GET','POST'])
+@app.route('/api/interest', methods=['POST'])
 @flask_praetorian.auth_required
 def interest():
     req = flask.request.get_json(force=True)
@@ -119,6 +119,14 @@ def interest():
     updated.biology = req.get('biology', False)
     db.session.commit()
     ret = {'message': str(updated)}
+    return ret
+
+@app.route('/api/get_interest')
+@flask_praetorian.auth_required
+def get_interest():
+    req = flask.request.get_json(force=True)
+    user = Interest.query.filter_by(user_id=flask_praetorian.current_user().id).first()
+    ret = {'message': str(user)}
     return ret
 
 # Run the example

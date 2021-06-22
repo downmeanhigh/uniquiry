@@ -1,22 +1,32 @@
 import React, { useEffect, useState } from "react"
-import {authFetch} from "./login";
+import {authFetch} from "./authenticate";
 
 const Interest = () => {
     const [message, setMessage] = useState('')
     const [datascience, setDatascience] = useState(false)
     const [software_dev, setSoftware_dev] = useState(false)
     const [optimization, setOptimization] = useState(false)
-    const [engineering, setEngineering] = useState(false);
+    const [engineering, setEngineering] = useState(false)
+    const [statistics, setStatistics] = useState(false)
+    const [mathematics, setMathematics] = useState(false)
+    const [game_dev, setGame_dev] = useState(false)
+    const [ai_ml, setAi_ml] = useState(false)
+    const [physics, setPhysics] = useState(false)
+    const [chemistry, setChemistry] = useState(false)
+    const [biology, setBiology] = useState(false);
 
     useEffect(() => {
-      authFetch("/api/interest", {
-        method: 'get',
-      }).then(response => {
+      authFetch("/api/get_interest").then(response => {
+        if (response.status === 401){
+          setMessage("Sorry you aren't authorized!")
+          return null
+        }
         return response.json()
       }).then(response => {
+        if (response && response.message){
           setMessage(response.message)
         }
-      )
+      })
     }, [])
 
 const onSubmitClick = (e)=>{
@@ -26,8 +36,15 @@ const onSubmitClick = (e)=>{
     'datascience': datascience,
     'software_dev': software_dev,
     'optimization': optimization,
-    'engineering': engineering
-  }
+    'engineering': engineering,
+    'statistics': statistics,
+    'mathematics': mathematics,
+    'game_dev': game_dev,
+    'ai_ml': ai_ml,
+    'physics': physics,
+    'chemistry': chemistry,
+    'biology': biology,
+    }
   console.log(values)
   authFetch('/api/interest', {
     method: 'post',
@@ -44,6 +61,55 @@ const onSubmitClick = (e)=>{
     <h2>Interest: {message}</h2>
     <label>
       <input type="checkbox"
+        defaultChecked={biology}
+        onChange={() => setBiology(!biology)}
+      />
+      Biology
+    </label>
+
+    <label>
+      <input type="checkbox"
+        defaultChecked={chemistry}
+        onChange={() => setChemistry(!chemistry)}
+      />
+      Chemistry
+    </label>
+
+    <label>
+      <input type="checkbox"
+        defaultChecked={physics}
+        onChange={() => setPhysics(!physics)}
+      />
+      Physics
+    </label>
+
+    <label>
+      <input type="checkbox"
+        defaultChecked={mathematics}
+        onChange={() => setMathematics(!mathematics)}
+      />
+      Mathematics
+    </label>
+
+    <label>
+      <input type="checkbox"
+        defaultChecked={statistics}
+        onChange={() => setStatistics(!statistics)}
+      />
+      Statistics
+    </label>
+
+    <label>
+      <input type="checkbox"
+        defaultChecked={ai_ml}
+        onChange={() => setAi_ml(!ai_ml)}
+      />
+      AI & Machine Learning
+    </label>
+
+
+    <label>
+      <input type="checkbox"
         defaultChecked={datascience}
         onChange={() => setDatascience(!datascience)}
       />
@@ -57,6 +123,15 @@ const onSubmitClick = (e)=>{
     />
     Software Development
   </label>
+
+    <label>
+    <input type="checkbox"
+      defaultChecked={game_dev}
+      onChange={() => setGame_dev(!game_dev)}
+    />
+    Game Development
+    </label>
+
 
     <label>
     <input type="checkbox"
