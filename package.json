@@ -85,7 +85,7 @@
     "raw-loader": "^1.0.0"
   },
   "scripts": {
-    "start-api": "cd api && env/Scripts/flask run --no-debugger",
+    "start-api": "cd api && env/Scripts/python -m flask run --no-debugger",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
