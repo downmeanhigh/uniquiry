@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {authFetch, useAuth} from "./components/authenticate"
 import Login from "./components/login.js"
 import Register from "./components/register.js"
-import Search from "./components/search.js"
+import Profile from "./components/profile.js";
 import {
   BrowserRouter as Router,
   Switch,
@@ -76,7 +76,7 @@ function Secret() {
   const [message, setMessage] = useState('')
 
   useEffect(() => {
-    authFetch("/api/protected").then(response => {
+    authFetch("/api/suggested").then(response => {
       if (response.status === 401){
         setMessage("Sorry you aren't authorized!")
         return null

@@ -1,12 +1,22 @@
 import React, { useEffect, useState } from "react"
 import {authFetch} from "../authenticate";
 
+import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import Button from '@material-ui/core/Button';
 
-const Interest = () => {
+const useStyles = makeStyles((theme) => ({
+  button: {
+    marginTop: theme.spacing(1),
+    marginLeft: theme.spacing(49),
+  },
+}));
+
+const Interest = ( { parentCallback } ) => {
+    const classes = useStyles();
     const [datascience, setDatascience] = useState(false)
     const [software_dev, setSoftware_dev] = useState(false)
     const [optimization, setOptimization] = useState(false)
@@ -18,6 +28,7 @@ const Interest = () => {
     const [physics, setPhysics] = useState(false)
     const [chemistry, setChemistry] = useState(false)
     const [biology, setBiology] = useState(false);
+
 
     const onSubmitInterestClick = (e)=>{
       e.preventDefault()
@@ -35,6 +46,7 @@ const Interest = () => {
         'chemistry': chemistry,
         'biology': biology,
         }
+      parentCallback(false, values)
       console.log(values)
       authFetch('/api/interest', {
         method: 'post',
@@ -52,7 +64,7 @@ const Interest = () => {
     <Typography variant="h6" gutterBottom>
       Field of Interest
     </Typography>
-    <Grid container spacing={3}>
+    <Grid container spacing={1}>
       <Grid item xs={12}>
         <FormControlLabel
           control={
@@ -175,7 +187,19 @@ const Interest = () => {
           />
       </Grid>
     </Grid>
+    <React.Fragment>
+                  <Button
+                    variant="outlined"
+                    color="secondary"
+                    size="small"
+                    onClick={onSubmitInterestClick}
+                    className={classes.button}
+                  >
+                    {'Confirm Interest'}
+                  </Button>
+              </React.Fragment>
   </React.Fragment>
+  
 );
 }
 

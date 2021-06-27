@@ -1,5 +1,6 @@
-from collections import UserList
+import pandas
 from flask_sqlalchemy import *
+
 
 # Initialize a local database
 db = SQLAlchemy()
@@ -14,6 +15,7 @@ class User(db.Model):
     lastname = db.Column(db.String(20), nullable=False)
     roles = db.Column(db.Text)
     interest = db.relationship('Interest', backref='User', lazy=True, uselist=False)
+    result = db.relationship('Result', backref='User', lazy=True, uselist=False)
 
     @property
     def rolenames(self):
@@ -50,7 +52,44 @@ class Interest(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('User.id'), primary_key=True, nullable=False)
     
     def __repr__(self):
-        return 'Interest of {} : (Biology: {}, Chemistry: {}, Mathematics: {}, Physics: {}, Statistics: {}, \
-            AI & Machine Learning: {}, Data Science: {}, Software Development: {}, Game Development: {}, Optimization: {}, Engineering: {})'\
-                .format(self.user_id, self.biology, self.chemistry, self.mathematics, self.physics, self.statistics,\
-                    self.ai_ml, self.datascience, self.software_dev, self.game_dev, self.optimization, self.engineering)
+        fields = ['biology', 'chemistry', 'mathematics', 'physics', 'statistics',\
+                    'ai_ml', 'datascience', 'software_dev', 'game_dev', 'optimization','engineering']
+        bools = [self.biology, self.chemistry, self.mathematics, self.physics, self.statistics,\
+                    self.ai_ml, self.datascience, self.software_dev, self.game_dev, self.optimization, self.engineering]
+        ret = []
+        for i, b in enumerate(bools):
+            if b:
+                ret.append(fields[i])
+        return ','.join(ret)
+
+
+class Result(db.Model):
+    __tablename__ = 'Result'
+    firstH2 = db.Column(db.Float, nullable=False, default=0)
+    secondH2 = db.Column(db.Float, nullable=False, default=0)
+    thirdH2 = db.Column(db.Float, nullable=False, default=0)
+    firstH1 = db.Column(db.Float, nullable=False, default=0)
+    secondH1 = db.Column(db.Float, nullable=False, default=0)
+    pw = db.Column(db.Float, nullable=False, default=0)
+    total = db.Column(db.Float, nullable=False, default=0)
+    user_id = db.Column(db.Integer, db.ForeignKey('User.id'), primary_key=True, nullable=False)
+
+
+class Course(db.Model):
+    __tablename__ = 'Course'
+    id = db.Column(db.Integer, primary_key=True)
+    code = db.Column(db.String, nullable=False)
+    school = db.Column(db.String(3), nullable=False)
+    fac = db.Column(db.String(4), nullable=False)
+    name = db.Column(db.String(50), nullable=False)
+    bachelor=db.Column(db.String(1), nullable=False)
+    desc=db.Column(db.String(1000), nullable=True)
+    field = db.Column(db.String(100), nullable=False)
+    igp_10 = db.Column(db.String(5), nullable=False)
+    igp_90 = db.Column(db.String(5), nullable=False)
+    sal_2020 = db.Column(db.Float, nullable=True)
+    sal_2019 = db.Column(db.Float, nullable=True)
+    url = db.Column(db.String(100), nullable=False)
+    
+    def __repr__(self):
+        return "{} ({})".format(self.name,self.school.upper()) 
