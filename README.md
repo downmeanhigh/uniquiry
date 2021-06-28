@@ -4,16 +4,23 @@ How to run Uniquiry in Localhost in 8 simple steps
 
 I) Set up Backend
 In cmd:
+
 2. cd api
+
 3. env\Scripts\activate (activate virtual env)
+
 4. pip install -r requirements.txt
+
 5. python -m flask run
 
 
 II) Set up Frontend
 In cmd (a separate window):
+
 6. npm install (download and install dependencies)
+
 7. npm run start
+
 8. Uniquiry is now running at localhost 
 
 
