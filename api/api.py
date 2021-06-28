@@ -77,7 +77,7 @@ def register():
     return ret, 200
 
 # Set up some routes for the example
-@app.route('/')
+@app.route('/api/')
 def home():
     return {"Welcome": "to Uniquiry"}, 200
 
