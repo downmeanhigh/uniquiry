@@ -4,7 +4,7 @@ import flask_praetorian
 import flask_cors
 import pandas
 
-from database import db, User, Interest, Result, Course
+from set_db import db, User, Interest, Result, Course
 
 # Initialize flask app for the example
 app = flask.Flask(__name__)
