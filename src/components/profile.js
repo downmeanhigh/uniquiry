@@ -18,7 +18,11 @@ import Footer from './footer';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    position: 'relative',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    padding: '0 8px',
+    ...theme.mixins.toolbar,
   },
   layout: {
     width: 'auto',
@@ -104,12 +108,6 @@ const Profile = () => {
       if (response && response.message){
         setMessage(response.message)
       }
-      const Answer = () => {
-        return <div>
-        {message}
-      </div>
-      }
-      return <Answer />
     })
   };
 
@@ -129,7 +127,7 @@ const Profile = () => {
       <CssBaseline />
       <AppBar position="absolute" color="default" className={classes.appBar}>
         <Toolbar>
-          <Link variant="h6" color="inherit" href="https://localhost:3000/" noWrap>
+          <Link variant="h6" color="inherit" href="/" noWrap>
             Uniquiry
           </Link>
         </Toolbar>
@@ -153,10 +151,9 @@ const Profile = () => {
                   Your profile has been updated.
                 </Typography>
                 <Typography variant="subtitle1">
+                  You have updated your profile successfully.
                   {JSON.stringify(interests)}
                   {JSON.stringify(results)}
-                  Your order number is #2001539. We have emailed your order confirmation, and will
-                  send you an update when your order has shipped.
                 </Typography>
                 <div className={classes.buttons}>
                     <Button onClick={handleRestart} className={classes.button}>
@@ -169,6 +166,7 @@ const Profile = () => {
                     onClick={handleSuggest}
                     className={classes.button}
                     disabled={disabledNext}
+                    href="/Secret"
                   >
                     Show me my suggested courses
                   </Button>

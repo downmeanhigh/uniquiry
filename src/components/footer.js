@@ -9,7 +9,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary">
       {'Copyright © '}
-      <Link color="inherit" href="https://localhost:3000/api">
+      <Link color="inherit" href="/">
         Uniquiry
       </Link>{' '}
       {new Date().getFullYear()}
@@ -40,7 +40,7 @@ const Footer = () => {
       <CssBaseline />
       <footer className={classes.footer}>
         <Container maxWidth="sm">
-          <Typography variant="body1">My sticky footer can be found here.</Typography>
+          <Typography variant="body1">The ultimate web for your university recommendations.</Typography>
           <Copyright />
         </Container>
       </footer>

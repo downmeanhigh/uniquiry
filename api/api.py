@@ -118,7 +118,7 @@ def protected():
     A protected endpoint. The auth_required decorator will require a header
     containing a valid JWT
     """
-    return {'message': f'protected endpoint (allowed user {flask_praetorian.current_user().firstname})'}
+    return {'message': f'Welcome to Uniquiry, {flask_praetorian.current_user().firstname}'}
 
 @app.route('/api/interest', methods=['POST'])
 @flask_praetorian.auth_required

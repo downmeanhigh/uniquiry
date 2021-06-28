@@ -3,6 +3,7 @@ import {authFetch, useAuth} from "./components/authenticate"
 import Login from "./components/login.js"
 import Register from "./components/register.js"
 import Profile from "./components/profile.js";
+import Homepage from "./components/homepage.js";
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,7 +16,7 @@ export default function App() {
   return (
     <Router>
       <div>
-        <nav>
+        {/* <nav>
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -30,7 +31,7 @@ export default function App() {
               <Link to="/secret">Secret</Link>
             </li>
           </ul>
-        </nav>
+        </nav> */}
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
@@ -41,9 +42,10 @@ export default function App() {
           <Route path="/register">
             <Register />
           </Route>
+          <PrivateRoute path="/profile" component={Profile} />
           <PrivateRoute path="/secret" component={Secret} />
           <Route path="/">
-            <Home />
+            <Homepage />
           </Route>
         </Switch>
       </div>
@@ -51,16 +53,16 @@ export default function App() {
   );
 }
 
-function Home() {
-  useEffect(() => {
-    fetch("/api").then(resp => resp.json()).then(resp => console.log(resp))
-  }, [])
-  return (
-    <div>
-      <h2>Home</h2>
-    </div>
-  );
-}
+// function Home() {
+//   useEffect(() => {
+//     fetch("/api").then(resp => resp.json()).then(resp => console.log(resp))
+//   }, [])
+//   return (
+//     <div>
+//       <h2>Home</h2>
+//     </div>
+//   );
+// }
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const [logged] = useAuth();

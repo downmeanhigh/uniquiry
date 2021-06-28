@@ -14,6 +14,7 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import Homepage from "./homepage";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -86,7 +87,13 @@ const Login = () => {
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
+            <Button
+                  variant="variant"
+                  color="secondary"
+                  href="/"
+                  className={classes.button}>
+                  U
+            </Button>
           </Avatar>
           <Typography component="h1" variant="h5">
             Sign in
@@ -149,11 +156,8 @@ const Login = () => {
       </Grid>
     </Grid>
     : 
-      <div>
-        <Profile />
-        <button onClick={() => logout()}>Logout</button>
-      </div>}
-    </div>
+      <Homepage />}
+  </div>
   )
 }
 

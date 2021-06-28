@@ -11,6 +11,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Homepage from "./homepage";
+import { login, useAuth } from "./authenticate";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -39,6 +41,7 @@ const Register = () => {
     const [email, setEmail] = useState('')
     const [firstname, setFirstname] = useState('')
     const [lastname, setLastname] = useState('');
+    const [logged] = useAuth();
   
     const onSubmitClick = (e)=>{
       e.preventDefault()
@@ -55,14 +58,18 @@ const Register = () => {
         method: 'post',
         body: JSON.stringify(opts)
       }).then(r => r.json())
-      .then(
-        result => {console.log(result)
+      .then(token => {
+        if (token.access_token) {
+            login(token)
+            console.log(token)
         }
-      )
+      })
     }
     
 
     return (
+      <div>
+        {!logged?
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
@@ -168,6 +175,9 @@ const Register = () => {
           </form>
         </div>
       </Container>
+        :
+          <Homepage />}
+    </div>
     );
 }
 export default Register;
