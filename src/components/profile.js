@@ -14,6 +14,8 @@ import Typography from '@material-ui/core/Typography';
 import Interest from './Information/interest';
 import Result from './Information/result';
 import Link from '@material-ui/core/Link';
+import {Avatar} from '@material-ui/core';
+import uniquiry from './Logos/uniquiry.png';
 import Footer from './footer';
 
 const useStyles = makeStyles((theme) => ({
@@ -125,10 +127,10 @@ const Profile = () => {
   return (
     <React.Fragment>
       <CssBaseline />
-      <AppBar position="absolute" color="default" className={classes.appBar}>
+      <AppBar position="absolute" color="inherit" className={classes.appBar}>
         <Toolbar>
           <Link variant="h6" color="inherit" href="/" noWrap>
-            Uniquiry
+            <Avatar alt="uniquiry" imgProps sizes="large" src={uniquiry} />
           </Link>
         </Toolbar>
       </AppBar>

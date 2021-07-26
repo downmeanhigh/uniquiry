@@ -50,9 +50,10 @@ with app.app_context():
                 field = row[6],
                 igp_10 = row[7],
                 igp_90 = row[8],
-                sal_2020 = row[9],
-                sal_2019 = row[10],
-                url = row[11]))
+                boundary = row[9],
+                sal_2020 = row[10],
+                sal_2019 = row[11],
+                url = row[12]))
         db.session.commit()
 
 # Register and add users into database
@@ -160,16 +161,31 @@ def result():
 @flask_praetorian.auth_required
 def suggest():
     match_interest = Interest.query.filter_by(user_id=flask_praetorian.current_user().id).first()
+    score = Result.query.filter_by(user_id=flask_praetorian.current_user().id).first()
     fields = str(match_interest).split(",")
     matched = {}
     for field in fields:
-        query=Course.query.filter(Course.field.contains(field)).all()
+        query=Course.query.filter(Course.field.contains(field))
+        query=Course.query.filter(Course.boundary <= score.total)
         for q in query:
             if not matched.get(str(q)):
                 matched[str(q)] = 0
             matched[str(q)] +=1
     
     return { 'message': str(matched)}
+
+@app.route('/api/search')
+def search():
+    req = flask.request.get_json(force=True)
+    keywords = req.get('keywords', None)
+    words = str(keywords).split(" ")
+    selected = {}
+    query = Course.query
+    if not words:
+        for word in words:
+            query = query.filter(Course.name.contains(word))
+    
+    return { 'message': str(selected)}
 
 # Run the example
 if __name__ == '__main__':

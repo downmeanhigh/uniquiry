@@ -87,6 +87,7 @@ class Course(db.Model):
     field = db.Column(db.String(100), nullable=False)
     igp_10 = db.Column(db.String(5), nullable=False)
     igp_90 = db.Column(db.String(5), nullable=False)
+    boundary = db.Column(db.Float, nullable=True)
     sal_2020 = db.Column(db.Float, nullable=True)
     sal_2019 = db.Column(db.Float, nullable=True)
     url = db.Column(db.String(100), nullable=False)
