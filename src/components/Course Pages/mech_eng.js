@@ -23,7 +23,7 @@ const rows = [
   createData('Mechanical Engineering (NTU)', 'CCC/D', 'AAA/A', '$3,850', 66.25),
 ];
 
-export default function mech_eng() {
+export default function Mech_eng() {
   const classes = useStyles();
 
   return (

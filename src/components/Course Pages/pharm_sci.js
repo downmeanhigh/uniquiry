@@ -22,7 +22,7 @@ const rows = [
   createData('Pharmaceutical Science', 'AAA/A', 'AAA/A', '$3,528', 85),
 ];
 
-export default function pharm_sci() {
+export default function Pharm_sci() {
   const classes = useStyles();
 
   return (

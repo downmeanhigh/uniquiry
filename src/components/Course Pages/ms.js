@@ -22,7 +22,7 @@ const rows = [
   createData('Maritime Studies', 'CCD/C', 'AAA/B', '$3,500', 65),
 ];
 
-export default function ms() {
+export default function Ms() {
   const classes = useStyles();
 
   return (

@@ -22,7 +22,7 @@ const rows = [
   createData('Information Security', 'AAA/A', 'AAA/A', '$5,000', 85),
 ];
 
-export default function info_sec() {
+export default function Info_sec() {
   const classes = useStyles();
 
   return (

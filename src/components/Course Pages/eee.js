@@ -23,7 +23,7 @@ const rows = [
   createData('Electrical Engineering (NTU)', 'CDD/C', 'AAA/A', '$3,880', 62.5),
 ];
 
-export default function eee() {
+export default function Eee() {
   const classes = useStyles();
 
   return (

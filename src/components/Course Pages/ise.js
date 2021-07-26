@@ -22,7 +22,7 @@ const rows = [
   createData('Industrial Systems Engineering and Management', 'BBC/C', 'AAA/B', '$4,380', 72.5),
 ];
 
-export default function ise() {
+export default function Ise() {
   const classes = useStyles();
 
   return (

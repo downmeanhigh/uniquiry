@@ -22,7 +22,7 @@ const rows = [
   createData('Life Sciences', 'AAA/C', 'AAA/A', '$3,528', 82.5),
 ];
 
-export default function life() {
+export default function Life() {
   const classes = useStyles();
 
   return (

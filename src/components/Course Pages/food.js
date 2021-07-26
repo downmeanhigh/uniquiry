@@ -22,7 +22,7 @@ const rows = [
   createData('Food Science and Technology', 'AAA/A', 'AAA/A', '$3,528', 85),
 ];
 
-export default function food() {
+export default function Food() {
   const classes = useStyles();
 
   return (

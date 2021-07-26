@@ -22,7 +22,7 @@ const rows = [
   createData('Data Science & Artificial Intelligence', 'AAA/A', 'AAA/A', '$4,300', 85),
 ];
 
-export default function dsai() {
+export default function Dsai() {
   const classes = useStyles();
 
   return (

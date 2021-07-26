@@ -22,7 +22,7 @@ const rows = [
   createData('Data Science and Economics', 'AAA/C', 'AAA/A', '$4,125', 82.5),
 ];
 
-export default function dse() {
+export default function Dse() {
   const classes = useStyles();
 
   return (

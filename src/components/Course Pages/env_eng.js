@@ -23,7 +23,7 @@ const rows = [
   createData('Environmental Engineering (NTU)', 'CCC/C', 'AAA/A', '$3,450', 67.5),
 ];
 
-export default function env_eng() {
+export default function Env_eng() {
   const classes = useStyles();
 
   return (

@@ -24,7 +24,7 @@ const rows = [
   createData('Computer Science (SMU)', 'ABB/A', 'AAA/A', '$4,542', 80),
 ];
 
-export default function cs() {
+export default function Cs() {
   const classes = useStyles();
 
   return (

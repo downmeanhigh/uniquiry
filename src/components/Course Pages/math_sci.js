@@ -22,7 +22,7 @@ const rows = [
   createData('Mathematical Sciences', 'BCC/B', 'AAA/A', '$3,656', 71.25),
 ];
 
-export default function math_sci() {
+export default function Math_sci() {
   const classes = useStyles();
 
   return (

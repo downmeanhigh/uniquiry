@@ -23,7 +23,7 @@ const rows = [
   createData('Computer Engineering (NTU)', 'AAC/B', 'AAA/A', '$4,100', 78.75),
 ];
 
-export default function comp_eng() {
+export default function Comp_eng() {
   const classes = useStyles();
 
   return (

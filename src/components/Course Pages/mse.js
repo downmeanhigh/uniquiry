@@ -22,7 +22,7 @@ const rows = [
   createData('Materials Science and Engineering', 'BBC/C', 'AAA/A', '$3,900', 72.5),
 ];
 
-export default function mse() {
+export default function Mse() {
   const classes = useStyles();
 
   return (

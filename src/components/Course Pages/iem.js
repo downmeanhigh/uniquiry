@@ -22,7 +22,7 @@ const rows = [
   createData('Information Engineering & Media', 'BCC/D', 'AAA/B', '$4,000', 68.75),
 ];
 
-export default function iem() {
+export default function Iem() {
   const classes = useStyles();
 
   return (

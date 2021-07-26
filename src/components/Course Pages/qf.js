@@ -22,7 +22,7 @@ const rows = [
   createData('Quantitative Finance', 'AAA/C', 'AAA/A', '$3,528', 82.5),
 ];
 
-export default function qf() {
+export default function Qf() {
   const classes = useStyles();
 
   return (

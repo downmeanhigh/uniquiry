@@ -23,7 +23,7 @@ const rows = [
   createData('Information Systems (SMU)', 'BBC/B', 'AAA/A', '$4,542', 80),
 ];
 
-export default function info_sys() {
+export default function Info_sys() {
   const classes = useStyles();
 
   return (

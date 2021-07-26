@@ -22,7 +22,7 @@ const rows = [
   createData('Physics', 'AAA/C', 'AAA/A', '$3,528', 82.5),
 ];
 
-export default function phy() {
+export default function Phy() {
   const classes = useStyles();
 
   return (

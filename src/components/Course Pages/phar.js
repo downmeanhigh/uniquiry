@@ -22,7 +22,7 @@ const rows = [
   createData('Pharmacy', 'AAA/B', 'AAA/A', '$3,700', 83.75),
 ];
 
-export default function phar() {
+export default function Phar() {
   const classes = useStyles();
 
   return (
