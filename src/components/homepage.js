@@ -21,7 +21,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import SearchIcon from '@material-ui/icons/Search';
 import { mainListItems, secondaryListItems } from './Homepage/listItems';
-import Time from './Homepage/time';
+// import Chart from './Homepage/chart';
+// import Deposits from './Homepage/deposits';
 // import Orders from './Homepage/orders';
 import { Button, Avatar, ListItem } from '@material-ui/core';
 import uniquiry from './Logos/uniquiry.png';
@@ -260,18 +261,16 @@ export default function Homepage() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={3}>
-          <Grid item xs={12} md={8} lg={9}>
-          <Paper className={fixedHeightPaper}>
+        <Container maxWidth="xl" className={classes.container}>
+          <Grid container spacing={3} xs={12}>
+            {/* Chart */}
             <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
             <InputBase
-              color='primary'
-              margin='dense'
-              placeholder="Search University Courses (eg: Data)"
+              fullWidth={true}
+              placeholder="Search…"
               value={words}
               onChange={(event) => setWords(event.target.value)}
               onKeyDown={handleSearch}
@@ -281,18 +280,9 @@ export default function Homepage() {
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
-            </div>
-            </Paper>
+          </div>
+          {list}
           </Grid>
-            <Grid item xs={12} md={4} lg={3}>
-              <Paper className={fixedHeightPaper}>
-                <Time />
-              </Paper>
-            </Grid>
-          <Grid container spacing={3} xs={12}>
-            {list}
-          </Grid>
-        </Grid>
           <Box pt={4}>
             <Footer />
           </Box>

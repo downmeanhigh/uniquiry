@@ -4,6 +4,8 @@ import Login from "./components/login.js"
 import Register from "./components/register.js"
 import Profile from "./components/profile.js";
 import Homepage from "./components/homepage.js";
+import biz_anal from "./components/Course Pages/biz_anal.js";
+import cs from "./components/Course Pages/cs.js";
 import {
   BrowserRouter as Router,
   Switch,
@@ -44,6 +46,8 @@ export default function App() {
           </Route>
           <PrivateRoute path="/profile" component={Profile} />
           <PrivateRoute path="/secret" component={Secret} />
+          <PrivateRoute path="/biz_anal" component={biz_anal}/>
+          <PrivateRoute path="/cs" component={cs}/>
           <Route path="/">
             <Homepage />
           </Route>
