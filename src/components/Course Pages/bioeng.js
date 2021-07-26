@@ -22,7 +22,7 @@ const rows = [
   createData('Bioengineering', 'BCC/B', 'AAA/A', '$3,450', 71.25),
 ];
 
-export default function bioeng() {
+export default function Bioeng() {
   const classes = useStyles();
 
   return (

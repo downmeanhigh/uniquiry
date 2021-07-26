@@ -22,7 +22,7 @@ const rows = [
   createData('Chemistry & Biological Sciences', 'BBC/B', 'AAA/A', '$3,245', 73.75),
 ];
 
-export default function chem_bio_sci() {
+export default function Chem_bio_sci() {
   const classes = useStyles();
 
   return (

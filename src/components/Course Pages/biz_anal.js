@@ -22,7 +22,7 @@ const rows = [
   createData('Business Analytics', 'AAA/A', 'AAA/A', '$5,000', 85),
 ];
 
-export default function biz_anal() {
+export default function Biz_anal() {
   const classes = useStyles();
 
   return (

@@ -22,7 +22,7 @@ const rows = [
   createData('Biomedical Engineering', 'BBB/C', 'AAA/A', '$3,500', 75),
 ];
 
-export default function biomed_eng() {
+export default function Biomed_eng() {
   const classes = useStyles();
 
   return (

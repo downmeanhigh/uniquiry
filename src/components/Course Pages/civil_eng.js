@@ -23,7 +23,7 @@ const rows = [
   createData('Civil Engineering (NTU)', 'CDD/C', 'AAA/B', '$3,500', 62.5),
 ];
 
-export default function civil_eng() {
+export default function Civil_eng() {
   const classes = useStyles();
 
   return (
