@@ -19,7 +19,7 @@ function createData(name, IGP10, IGP90, grad_sal2020, RankPoint) {
 }
 
 const rows = [
-  createData('Chemistry & Biological Sciences', 'BBC/B', 'AAA/A', '$3,245', 73.75),
+  createData('Chemistry & Biological Chemistry', 'BBC/B', 'AAA/A', '$3,245', 73.75),
 ];
 
 export default function Chem_bio_sci() {

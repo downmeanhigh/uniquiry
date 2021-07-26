@@ -2,214 +2,250 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
+import aero_eng from '../Images/aero_eng.jpg';
+import app_phy from '../Images/app_phy.jpg';
+import bio_sci from '../Images/bio_sci.jpg';
+import bioeng from '../Images/bioeng.jpg';
+import biomed_eng from '../Images/biomed_eng.jpg';
+import biz_anal from '../Images/biz_anal.jpg'
+import chem_bio_sci from '../Images/chem_bio_sci.jpg';
+import chem_eng from '../Images/chem_eng.jpg';
+import chem from '../Images/chem.jpg';
+import civil_eng from '../Images/civil_eng.jpg';
+import comp_eng from '../Images/comp_eng.jpg';
+import cs from '../Images/cs.jpg';
+import dsa from '../Images/dsa.jpg';
+import dsai from '../Images/dsai.jpg';
+import dse from '../Images/dse.jpg';
+import eee from '../Images/eee.jpg';
+import eng_sci from '../Images/eng_sci.jpg';
+import env_eng from '../Images/env_eng.jpg';
+import env_sci from '../Images/env_sci.jpg';
+import food from '../Images/food.jpg';
+import iem from '../Images/iem.jpg';
+import info_sec from '../Images/info_sec.jpg';
+import info_sys from '../Images/info_sys.jpg';
+import ise from '../Images/ise.jpg';
+import life from '../Images/life.jpg';
+import math_sci from '../Images/math_sci.jpg';
+import math from '../Images/math.jpg';
+import mech_eng from '../Images/mech_eng.jpg';
+import ms from '../Images/ms.jpg';
+import mse from '../Images/mse.jpg';
+import phar from '../Images/phar.jpg';
+import pharm_sci from '../Images/pharm_sci.jpg';
+import phy from '../Images/phy.jpg';
+import qf from '../Images/qf.jpg';
+import stats from '../Images/stats.jpg';
+import Mse from './Course Pages/mse';
 
 const images = [
   {
-    src: '../../../Images/aero_eng',
+    src: aero_eng,
     title: 'Aerospace Engineering',
     width: '33.33%',
     href: '/aero_eng',
   },
   {
-    url: '/static/images/image-list/burgers.jpg',
+    src: app_phy,
     title: 'Applied Physics',
     width: '33.33%',
     href: '/app_phy',
   },
   {
-    url: '/static/images/image-list/camera.jpg',
+    src: bio_sci,
     title: 'Biological Sciences',
     width: '33.33%',
     href: '/bio_sci',
   },
   {
-    url: '/static/images/image-list/camera.jpg',
+    src: bioeng,
     title: 'Bioengineering',
     width: '33.33%',
     href: '/bioeng',
   },
   {
-    url: '/static/images/image-list/breakfast.jpg',
+    src: biomed_eng,
     title: 'Biomedical Engineering',
     width: '33.33%',
     href: '/biomed_eng',
   },
   {
-    url: '/static/images/image-list/burgers.jpg',
+    src: biz_anal,
     title: 'Business Analytics',
     width: '33.33%',
     href: '/biz_anal',
   },
   {
-    url: '/static/images/image-list/camera.jpg',
-    title: 'Chemistry & Biological Sciences',
+    src: chem_bio_sci,
+    title: 'Chemistry & Biological Chemistry',
     width: '33.33%',
     href: '/chem_bio_sci',
   },
   {
-    url: '/static/images/image-list/camera.jpg',
+    src: chem_eng,
     title: 'Chemical Engineering',
     width: '33.33%',
     href: '/chem_eng',
   },
   {
-    url: '/static/images/image-list/breakfast.jpg',
+    src: chem,
     title: 'Chemistry',
     width: '33.33%',
     href: '/chem',
   },
   {
-    url: '/static/images/image-list/burgers.jpg',
+    src: civil_eng,
     title: 'Civil Engineering',
     width: '33.33%',
     href: '/civil_eng',
   },
   {
-    url: '/static/images/image-list/camera.jpg',
+    src: comp_eng,
     title: 'Computer Engineering',
     width: '33.33%',
     href: '/comp_eng',
   },
   {
-    url: '/static/images/image-list/camera.jpg',
+    src: cs,
     title: 'Computer Science',
     width: '33.33%',
     href: '/cs',
   },
   {
-    url: '/static/images/image-list/breakfast.jpg',
+    src: dsa,
     title: 'Data Science & Analytics',
     width: '33.33%',
     href: '/dsa',
   },
   {
-    url: '/static/images/image-list/burgers.jpg',
+    src: dsai,
     title: 'Data Science & Artificial Intelligence',
     width: '33.33%',
     href: '/dsai',
   },
   {
-    url: '/static/images/image-list/camera.jpg',
+    src: dse,
     title: 'Data Science & Economics',
     width: '33.33%',
     href: '/dse',
   },
   {
-    url: '/static/images/image-list/camera.jpg',
+    src: eee,
     title: 'Electrical Engineering',
     width: '33.33%',
     href: '/eee',
   },
   {
-    url: '/static/images/image-list/breakfast.jpg',
+    src: eng_sci,
     title: 'Engineering Science',
     width: '33.33%',
     href: '/eng_sci',
   },
   {
-    url: '/static/images/image-list/burgers.jpg',
+    src: env_eng,
     title: 'Environmental Engineering',
     width: '33.33%',
     href: '/env_eng',
   },
   {
-    url: '/static/images/image-list/camera.jpg',
+    src: env_sci,
     title: 'Environmental Studies',
     width: '33.33%',
     href: '/env_sci',
   },
   {
-    url: '/static/images/image-list/camera.jpg',
+    src: food,
     title: 'Food Science & Technology',
     width: '33.33%',
     href: '/food',
   },
   {
-    url: '/static/images/image-list/breakfast.jpg',
+    src: iem,
     title: 'Information Engineering & Media',
     width: '33.33%',
     href: '/iem',
   },
   {
-    url: '/static/images/image-list/burgers.jpg',
+    src: info_sec,
     title: 'Information Security',
     width: '33.33%',
     href: '/info_sec',
   },
   {
-    url: '/static/images/image-list/camera.jpg',
+    src: info_sys,
     title: 'Information Systems',
     width: '33.33%',
     href: '/info_sys',
   },
   {
-    url: '/static/images/image-list/camera.jpg',
+    src: ise,
     title: 'Industrial Systems Engineering & Management',
     width: '33.33%',
     href: '/ise',
   },
   {
-    url: '/static/images/image-list/breakfast.jpg',
+    src: life,
     title: 'Life Sciences',
     width: '33.33%',
     href: '/life',
   },
   {
-    url: '/static/images/image-list/burgers.jpg',
+    src: math_sci,
     title: 'Mathematical Sciences',
     width: '33.33%',
     href: '/math_sci',
   },
   {
-    url: '/static/images/image-list/camera.jpg',
+    src: math,
     title: 'Mathematics',
     width: '33.33%',
     href: '/math',
   },
   {
-    url: '/static/images/image-list/camera.jpg',
+    src: mech_eng,
     title: 'Mechanical Engineering',
     width: '33.33%',
     href: '/mech_eng',
   },
   {
-    url: '/static/images/image-list/breakfast.jpg',
+    src: ms,
     title: 'Maritime Studies',
     width: '33.33%',
     href: '/ms',
   },
   {
-    url: '/static/images/image-list/burgers.jpg',
+    src: mse,
     title: 'Materials Science & Engineering',
     width: '33.33%',
     href: '/mse',
   },
   {
-    url: '/static/images/image-list/camera.jpg',
+    src: phar, 
     title: 'Pharmacy',
     width: '33.33%',
     href: '/phar',
   },
   {
-    url: '/static/images/image-list/camera.jpg',
+    src: pharm_sci,
     title: 'Pharmaceutical Science',
     width: '33.33%',
     href: '/pharm_sci',
   },
   {
-    url: '/static/images/image-list/breakfast.jpg',
+    src: phy,
     title: 'Physics',
     width: '33.33%',
     href: '/phy',
   },
   {
-    url: '/static/images/image-list/burgers.jpg',
+    src: qf,
     title: 'Quantitative Finance',
     width: '33.33%',
     href: '/qf',
   },
   {
-    url: '/static/images/image-list/camera.jpg',
+    src: stats,
     title: 'Statistics',
     width: '33.33%',
     href: '/stats',
