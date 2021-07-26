@@ -2,6 +2,13 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Link from '@material-ui/core/Link';
+import {Avatar} from '@material-ui/core';
+import uniquiry from './Logos/uniquiry.png';
+import Footer from './footer';
 
 const images = [
   {
@@ -294,6 +301,14 @@ export default function ButtonBases() {
 
   return (
     <div className={classes.root}>
+      <CssBaseline />
+      <AppBar position="absolute" color="inherit" className={classes.appBar}>
+        <Toolbar>
+          <Link variant="h6" color="inherit" href="/" noWrap>
+            <Avatar alt="uniquiry" imgProps sizes="large" src={uniquiry} />
+          </Link>
+        </Toolbar>
+      </AppBar>
       {images.map((image) => (
         <ButtonBase
           focusRipple
@@ -325,6 +340,7 @@ export default function ButtonBases() {
           </span>
         </ButtonBase>
       ))}
+            <Footer />
     </div>
   );
 }
