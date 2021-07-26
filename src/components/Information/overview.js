@@ -36,11 +36,23 @@ const Overview = () => {
           })
         }, [])
         return (
-        <h1>
-          <h2>{details}</h2>
-          <h2>{interests}</h2>
-          <h2>{results}</h2>
-        </h1>
+        <React.Fragment>
+          <Grid item xs = {12}>
+            <Typography variant="h6" gutterBottom>
+              {details}
+            </Typography>
+          </Grid>
+          <Grid item xs = {12}>
+            <Typography variant="h6" gutterBottom>
+              {interests}            
+          </Typography>
+          </Grid>
+          <Grid item xs = {12}>
+            <Typography variant="h6" gutterBottom>
+              {results}            
+          </Typography>
+          </Grid>
+        </React.Fragment>
         )
       }
       
