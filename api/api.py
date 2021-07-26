@@ -180,14 +180,13 @@ def search():
     keywords = req.get('keywords', None)
     words = str(keywords).split(" ")
     selected = {}
-    query = Course.query
     if words:
         for word in words:
-            query = query.filter(Course.name.contains(word))
-        for q in query:
-            if not selected.get(str(q)):
-                selected[str(q)] = 0
-            selected[str(q)] +=1
+            query = Course.query.filter(Course.name.contains(word))
+            for q in query:
+                if not selected.get(str(q)):
+                    selected[str(q)] = 0
+                selected[str(q)] +=1
     else:
         selected = Course.name
     
