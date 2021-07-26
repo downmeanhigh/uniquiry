@@ -39,16 +39,19 @@ const Overview = () => {
         <React.Fragment>
           <Grid item xs = {12}>
             <Typography variant="h6" gutterBottom>
+              First name, last name, email :
               {details}
             </Typography>
           </Grid>
           <Grid item xs = {12}>
             <Typography variant="h6" gutterBottom>
+              List of interests :
               {interests}            
           </Typography>
           </Grid>
           <Grid item xs = {12}>
             <Typography variant="h6" gutterBottom>
+              A-Level Result :
               {results}            
           </Typography>
           </Grid>

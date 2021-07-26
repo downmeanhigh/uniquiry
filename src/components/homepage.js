@@ -24,6 +24,7 @@ import { mainListItems, secondaryListItems } from './Homepage/listItems';
 // import Chart from './Homepage/chart';
 // import Deposits from './Homepage/deposits';
 // import Orders from './Homepage/orders';
+import Time from './Homepage/time'
 import { Button, Avatar, ListItem } from '@material-ui/core';
 import uniquiry from './Logos/uniquiry.png';
 import { useAuth, authFetch, logout } from './authenticate';
@@ -261,32 +262,42 @@ export default function Homepage() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <Container maxWidth="xl" className={classes.container}>
-          <Grid container spacing={3} xs={12}>
-            {/* Chart */}
-            <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              fullWidth={true}
-              placeholder="Search…"
-              value={words}
-              onChange={(event) => setWords(event.target.value)}
-              onKeyDown={handleSearch}
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
-          {list}
+        <Container maxWidth="lg" className={classes.container}>
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={8} lg={9}>
+                <Paper className={fixedHeightPaper}>
+                  <div className={classes.search}>
+                      <div className={classes.searchIcon}>
+                        <SearchIcon />
+                      </div>
+                  <InputBase
+                    placeholder="Search…"
+                    value={words}
+                    onChange={(event) => setWords(event.target.value)}
+                    onKeyDown={handleSearch}
+                    classes={{
+                      root: classes.inputRoot,
+                      input: classes.inputInput,
+                    }}
+                    inputProps={{ 'aria-label': 'search' }}
+                  />
+                  </div>
+              </Paper>
+            </Grid>
+          <Grid item xs={12} md={4} lg={3}>
+              <Paper className={fixedHeightPaper}>
+                <Time />
+              </Paper>
+            </Grid>
+          <Grid item xs={12}>
+            <Paper />
+            {list}
           </Grid>
+        </Grid>
+      </Container>
           <Box pt={4}>
             <Footer />
           </Box>
-        </Container>
       </main>
     </div>
   );
