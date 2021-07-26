@@ -39,6 +39,7 @@ import Pharm_sci from "./components/Course Pages/pharm_sci";
 import Phy from "./components/Course Pages/phy";
 import Qf from "./components/Course Pages/qf";
 import Stats from "./components/Course Pages/stats";
+import ButtonBases from "./components/allcourses";
 
 import {
   BrowserRouter as Router,
@@ -115,7 +116,7 @@ export default function App() {
           <PrivateRoute path="/phy" component={Phy}/>
           <PrivateRoute path="/qf" component={Qf}/>
           <PrivateRoute path="/stats" component={Stats}/>
-
+          <PrivateRoute path="/all" component={ButtonBases}/>
           <Route path="/">
             <Homepage />
           </Route>
