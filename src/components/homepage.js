@@ -21,8 +21,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import SearchIcon from '@material-ui/icons/Search';
 import { mainListItems, secondaryListItems } from './Homepage/listItems';
-// import Chart from './Homepage/chart';
-// import Deposits from './Homepage/deposits';
+import Time from './Homepage/time';
 // import Orders from './Homepage/orders';
 import { Button, Avatar, ListItem } from '@material-ui/core';
 import uniquiry from './Logos/uniquiry.png';
@@ -262,15 +261,17 @@ export default function Homepage() {
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="xl" className={classes.container}>
-          <Grid container spacing={3} xs={12}>
-            {/* Chart */}
+          <Grid item xs={12} md={8} lg={9}>
+          <Paper className={fixedHeightPaper}>
             <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
             <InputBase
               fullWidth={true}
-              placeholder="Search…"
+              color='primary'
+              margin='dense'
+              placeholder="Search University Courses (eg: Data)"
               value={words}
               onChange={(event) => setWords(event.target.value)}
               onKeyDown={handleSearch}
@@ -280,8 +281,16 @@ export default function Homepage() {
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
-          </div>
-          {list}
+            </div>
+            </Paper>
+          </Grid>
+            <Grid item xs={12} md={4} lg={3}>
+              <Paper className={fixedHeightPaper}>
+                <Time />
+              </Paper>
+            </Grid>
+          <Grid container spacing={3} xs={12}>
+            {list}
           </Grid>
           <Box pt={4}>
             <Footer />

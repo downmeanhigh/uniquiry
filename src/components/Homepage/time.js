@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -14,22 +14,25 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Deposits() {
+export default function Time() {
   const classes = useStyles();
+  const [dateTime, setDateTime] = useState(new Date());
+
+  useEffect(() => {
+      const id = setInterval(() => setDateTime(new Date()), 1000);
+      return () => {
+          clearInterval(id);
+      }
+  }, []);
   return (
     <React.Fragment>
-      <Title>Recent Deposits</Title>
+      <Title>Time</Title>
       <Typography component="p" variant="h4">
-        $3,024.00
+        {dateTime.toLocaleDateString()}
       </Typography>
       <Typography color="textSecondary" className={classes.depositContext}>
-        on 15 March, 2019
+        {dateTime.toLocaleTimeString()}
       </Typography>
-      <div>
-        <Link color="primary" href="#" onClick={preventDefault}>
-          View balance
-        </Link>
-      </div>
     </React.Fragment>
   );
 }
