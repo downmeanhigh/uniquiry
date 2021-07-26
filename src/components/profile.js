@@ -10,6 +10,7 @@ import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Interest from './Information/interest';
 import Result from './Information/result';
@@ -182,8 +183,10 @@ const Profile = () => {
                 </Typography>
                 <Typography variant="subtitle1">
                   You have updated your profile successfully.
+                  <Grid item xs={12}>
                   {JSON.stringify(interests)}
                   {JSON.stringify(results)}
+                  </Grid>
                 </Typography>
                 <div className={classes.buttons}>
                     <Button onClick={handleRestart} className={classes.button}>
@@ -206,13 +209,13 @@ const Profile = () => {
               <React.Fragment>
                 {getStepContent(activeStep)}
                 <div className={classes.buttons}>
-                  {0 < activeStep < 3 && (
+                  {activeStep < 3 && activeStep !== 0 && (
                     <Button onClick={handleBack} className={classes.button}>
                       Back
                     </Button>
                   )}
                   
-                  {0 < activeStep < 3 && ( 
+                  {activeStep < 3 && activeStep !== 0 && ( 
                     <Button
                     variant="contained"
                     color="primary"
