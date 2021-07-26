@@ -7,11 +7,11 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Homepage from "./homepage";
+import uniquiry from './Logos/uniquiry.png';
 import { login, useAuth } from "./authenticate";
 
 const useStyles = makeStyles((theme) => ({
@@ -40,8 +40,10 @@ const Register = () => {
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
     const [firstname, setFirstname] = useState('')
-    const [lastname, setLastname] = useState('');
-    const [logged] = useAuth();
+    const [lastname, setLastname] = useState('')
+    const [logged] = useAuth()
+    const invalid = (!email.includes("@")) && (password.length < 8)
+    const [message, setMessage] = useState('')
   
     const onSubmitClick = (e)=>{
       e.preventDefault()
@@ -57,13 +59,19 @@ const Register = () => {
       fetch('/api/register', {
         method: 'post',
         body: JSON.stringify(opts)
-      }).then(r => r.json())
-      .then(token => {
-        if (token.access_token) {
-            login(token)
-            console.log(token)
+      }).then(response => {
+        if (response.status === 500){
+          setMessage("Username and/or email taken. Please try again")
+          return response.json()
         }
+        return response.json()
       })
+      .then(token => {
+        if (token.access_token){
+            login(token)
+            console.log(token)          
+        }
+        })
     }
     
 
@@ -73,9 +81,10 @@ const Register = () => {
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
+          <Button variant="variant" color="primary" href="/" className={classes.button}>
+            <Avatar href="/" className={classes.avatar} alt="uniquiry" imgProps sizes="large" src={uniquiry}>
+            </Avatar>
+          </Button>
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
@@ -117,6 +126,8 @@ const Register = () => {
                   label="Email Address"
                   name="email"
                   value={email}
+                  error={!email.includes("@")}
+                  helperText={(!email.includes("@") && email.length !== 0)?"Please key in a valid email address":""}
                   onChange={(e) => setEmail(e.target.value)}
                   autoComplete="email"
                 />
@@ -130,6 +141,8 @@ const Register = () => {
                   label="Username"
                   name="username"
                   value={username}
+                  error={message.length !== 0}
+                  helperText={message}
                   onChange={(e) => setUsername(e.target.value)}
                   autoComplete="username"
                 />
@@ -144,6 +157,8 @@ const Register = () => {
                   type="password"
                   id="password"
                   value={password}
+                  error={password.length < 8}
+                  helperText={(password.length < 8 && password.length !== 0)?"Password should have at least 8 characters":""}
                   onChange={(e) => setPassword(e.target.value)}
                   autoComplete="current-password"
                 />
@@ -157,7 +172,7 @@ const Register = () => {
             </Grid>
             <Button
               type="submit"
-              onClick={onSubmitClick}
+              onClick={(invalid)?null :onSubmitClick}
               fullWidth
               variant="contained"
               color="primary"

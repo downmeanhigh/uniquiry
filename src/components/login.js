@@ -14,6 +14,7 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import uniquiry from './Logos/uniquiry.png';
 import Homepage from "./homepage";
 
 
@@ -53,6 +54,7 @@ const Login = () => {
   const classes = useStyles();
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [incorrect, setIncorrect] = useState(false)
   const [logged] = useAuth();
 
   const onSubmitClick = (e)=>{
@@ -73,7 +75,7 @@ const Login = () => {
             console.log(token)          
         }
         else {
-            console.log("Please type in correct username/password")
+            setIncorrect(true)
         }
         })
     }
@@ -86,15 +88,10 @@ const Login = () => {
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <Button
-                  variant="variant"
-                  color="secondary"
-                  href="/"
-                  className={classes.button}>
-                  U
-            </Button>
-          </Avatar>
+          <Button variant="variant" color="primary" href="/" className={classes.button}>
+            <Avatar href="/" className={classes.avatar} alt="uniquiry" imgProps sizes="large" src={uniquiry}>
+            </Avatar>
+          </Button>
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
@@ -129,6 +126,11 @@ const Login = () => {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
+            {(incorrect) ?
+                (<Typography component="h3" variant="h3">
+                    Incorrect. Please try again
+                </Typography>) 
+                : <div></div>}
             <Button
               onClick={onSubmitClick}
               type="submit"
