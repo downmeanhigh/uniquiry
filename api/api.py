@@ -174,16 +174,22 @@ def suggest():
     
     return { 'message': str(matched)}
 
-@app.route('/api/search')
+@app.route('/api/search', methods=['GET', 'POST'])
 def search():
     req = flask.request.get_json(force=True)
     keywords = req.get('keywords', None)
     words = str(keywords).split(" ")
     selected = {}
     query = Course.query
-    if not words:
+    if words:
         for word in words:
             query = query.filter(Course.name.contains(word))
+        for q in query:
+            if not selected.get(str(q)):
+                selected[str(q)] = 0
+            selected[str(q)] +=1
+    else:
+        selected = Course.name
     
     return { 'message': str(selected)}
 

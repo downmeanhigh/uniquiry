@@ -151,6 +151,7 @@ export default function Homepage() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const [words, setWords] = React.useState('');
+  const [list, setList] = React.useState('');
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -178,16 +179,17 @@ export default function Homepage() {
 
 
   const handleSearch = (e) => {
-    if (e.keyCode == 13) {
-      authFetch("/api/search").then(response => {
-        if (response.status === 401){
-          setWords("Sorry you aren't authorized!")
-          return null
-        }
-        return response.json()
-      }).then(response => {
+    if (e.keyCode === 13) {
+      let opts = {
+        'keywords': words,
+    }
+      fetch("/api/search", {
+        method: 'post',
+        body: JSON.stringify(opts)
+    }).then(response => response.json())
+    .then(response => {
         if (response && response.message){
-          setWords(response.message)
+          setList(response.message)
         }
       })
   }};
@@ -279,6 +281,7 @@ export default function Homepage() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
+          {list}
           </Grid>
           <Box pt={4}>
             <Footer />
