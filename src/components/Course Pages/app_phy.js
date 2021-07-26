@@ -22,7 +22,7 @@ const rows = [
   createData('Applied Physics', 'BCC/D', 'AAA/A', '$3,700', 68.75),
 ];
 
-export default function App_eng() {
+export default function App_phy() {
   const classes = useStyles();
 
   return (
