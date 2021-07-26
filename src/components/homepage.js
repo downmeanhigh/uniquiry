@@ -260,7 +260,8 @@ export default function Homepage() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <Container maxWidth="xl" className={classes.container}>
+        <Container maxWidth="lg" className={classes.container}>
+          <Grid container spacing={3}>
           <Grid item xs={12} md={8} lg={9}>
           <Paper className={fixedHeightPaper}>
             <div className={classes.search}>
@@ -268,7 +269,6 @@ export default function Homepage() {
               <SearchIcon />
             </div>
             <InputBase
-              fullWidth={true}
               color='primary'
               margin='dense'
               placeholder="Search University Courses (eg: Data)"
@@ -292,6 +292,7 @@ export default function Homepage() {
           <Grid container spacing={3} xs={12}>
             {list}
           </Grid>
+        </Grid>
           <Box pt={4}>
             <Footer />
           </Box>
