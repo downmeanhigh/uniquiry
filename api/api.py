@@ -77,12 +77,6 @@ def register():
     ret = {'access_token': guard.encode_jwt_token(user)}
     return ret, 200
 
-# Set up some routes for the example
-@app.route('/api/')
-def home():
-    return {"Welcome": "to Uniquiry"}, 200
-
-
 @app.route('/api/login', methods=['POST'])
 def login():
     req = flask.request.get_json(force=True)
@@ -156,6 +150,16 @@ def result():
     db.session.commit()
     ret = {'message': 'Result updated'}
     return ret
+
+@app.route('/api/overview')
+@flask_praetorian.auth_required
+def overview():
+    id=flask_praetorian.current_user().id
+    user = User.query.filter_by(id=id).first()
+    details = [user.firstname, user.lastname, user.email]
+    interests = Interest.query.filter_by(user_id=id).first()
+    results = Result.query.filter_by(user_id=id).first()
+    return {"details": details, "interests": str(interests), "results": str(results)}
 
 @app.route('/api/suggested')
 @flask_praetorian.auth_required

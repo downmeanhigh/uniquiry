@@ -13,6 +13,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Interest from './Information/interest';
 import Result from './Information/result';
+import Overview from './Information/overview';
 import Link from '@material-ui/core/Link';
 import {Avatar} from '@material-ui/core';
 import uniquiry from './Logos/uniquiry.png';
@@ -116,8 +117,10 @@ const Profile = () => {
   function getStepContent(step) {
     switch (step) {
       case 0:
-        return <Interest parentCallback={callbackInterest}/>;
+        return <Overview />
       case 1:
+        return <Interest parentCallback={callbackInterest}/>;
+      case 2:
         return <Result parentCallback={callbackResult}/>;
       default:
         throw new Error('Unknown step');
@@ -137,8 +140,31 @@ const Profile = () => {
       <main className={classes.layout}>
         <Paper className={classes.paper}>
           <Typography component="h1" variant="h4" align="center">
-            Update Profile
+            Profile
           </Typography>
+        <React.Fragment>
+          {activeStep === 0 ? (
+            <div className={classes.buttons}>
+            <Button 
+            variant="contained"
+            color="secondary"
+            size="big"
+            onClick={handleNext}
+            className={classes.button}>
+              Edit my profile
+            </Button>
+            <Button
+            variant="contained"
+            color="primary"
+            size="big"
+            onClick={handleSuggest}
+            className={classes.button}
+            href="/Secret"
+            >
+            Show me my suggested courses
+            </Button>
+            </div>
+          ) : (
           <Stepper activeStep={activeStep} className={classes.stepper}>
             {steps.map((label) => (
               <Step key={label}>
@@ -146,8 +172,10 @@ const Profile = () => {
               </Step>
             ))}
           </Stepper>
+          )}
+          </React.Fragment>
           <React.Fragment>
-            {activeStep === steps.length ? (
+            {activeStep === 3 ? (
               <React.Fragment>
                 <Typography variant="h5" gutterBottom>
                   Your profile has been updated.
@@ -178,20 +206,23 @@ const Profile = () => {
               <React.Fragment>
                 {getStepContent(activeStep)}
                 <div className={classes.buttons}>
-                  {activeStep !== 0 && (
+                  {activeStep < 3 && (
                     <Button onClick={handleBack} className={classes.button}>
                       Back
                     </Button>
                   )}
-                  <Button
+                  
+                  {activeStep < 3 && ( 
+                    <Button
                     variant="contained"
                     color="primary"
-                    onClick={activeStep === steps.length - 1 ? handleDone : handleNext}
+                    onClick={activeStep === steps.length ? handleDone : handleNext}
                     className={classes.button}
                     disabled={disabledNext}
                   >
-                    {activeStep === steps.length - 1 ? 'Done' : 'Next'}
+                    {activeStep === steps.length ? 'Done' : 'Next'}
                   </Button>
+                  )}
                 </div>
               </React.Fragment>
             )}

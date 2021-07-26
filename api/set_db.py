@@ -73,6 +73,9 @@ class Result(db.Model):
     pw = db.Column(db.Float, nullable=False, default=0)
     total = db.Column(db.Float, nullable=False, default=0)
     user_id = db.Column(db.Integer, db.ForeignKey('User.id'), primary_key=True, nullable=False)
+    
+    def __repr__(self):
+        return "First H2: {}, second H2: {}, third H2: {}, first H1: {}, second H1: {}, Project Work: {}, total score: {}".format(self.firstH2, self.secondH2, self.thirdH2, self.firstH1, self.secondH1, self.pw, self.total)
 
 
 class Course(db.Model):
