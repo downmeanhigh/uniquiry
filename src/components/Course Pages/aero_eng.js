@@ -11,7 +11,7 @@ import Paper from '@material-ui/core/Paper';
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
-  },
+  }
 });
 
 function createData(name, IGP10, IGP90, grad_sal2020, RankPoint) {
@@ -22,7 +22,7 @@ const rows = [
   createData('Aerospace Engineering', 'AAB/C', 'AAA/A', '$4,000', 80),
 ];
 
-export default function aero_eng() {
+export default function Aero_eng() {
   const classes = useStyles();
 
   return (

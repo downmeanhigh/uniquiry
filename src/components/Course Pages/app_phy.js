@@ -8,11 +8,11 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   table: {
     minWidth: 650,
   },
-});
+}));
 
 function createData(name, IGP10, IGP90, grad_sal2020, RankPoint) {
   return { name, IGP10, IGP90, grad_sal2020, RankPoint};
@@ -22,7 +22,7 @@ const rows = [
   createData('Applied Physics', 'BCC/D', 'AAA/A', '$3,700', 68.75),
 ];
 
-export default function app_phy() {
+export default function App_eng() {
   const classes = useStyles();
 
   return (
