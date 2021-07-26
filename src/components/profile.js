@@ -206,13 +206,13 @@ const Profile = () => {
               <React.Fragment>
                 {getStepContent(activeStep)}
                 <div className={classes.buttons}>
-                  {activeStep < 3 && (
+                  {0 < activeStep < 3 && (
                     <Button onClick={handleBack} className={classes.button}>
                       Back
                     </Button>
                   )}
                   
-                  {activeStep < 3 && ( 
+                  {0 < activeStep < 3 && ( 
                     <Button
                     variant="contained"
                     color="primary"
