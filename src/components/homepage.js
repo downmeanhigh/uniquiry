@@ -21,9 +21,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import SearchIcon from '@material-ui/icons/Search';
 import { mainListItems, secondaryListItems } from './Homepage/listItems';
-// import Chart from './Homepage/chart';
-// import Deposits from './Homepage/deposits';
-// import Orders from './Homepage/orders';
 import Time from './Homepage/time'
 import { Button, Avatar, ListItem } from '@material-ui/core';
 import uniquiry from './Logos/uniquiry.png';
